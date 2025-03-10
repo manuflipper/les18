@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
 }
@@ -9,7 +20,6 @@ header {
     color: white;
     text-align: left;
     position: relative;
-    padding: 0;
     height: 300px;
 }
 
@@ -24,35 +34,15 @@ header h1 {
 }
 
 .container {
+    width: 100%;
     display: flex;
-    flex-direction: column; /* Op mobiel eerst onder elkaar */
-    padding: 20px;
+    flex-direction: column; /* Op mobiel onder elkaar */
 }
 
+/* Kolommen */
 [class*="col-"] {
     width: 100%;
 }
-@media only screen and (min-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: row; /* Naast elkaar op bredere schermen */
-        flex-wrap: nowrap; /* Voorkomt dat kolommen onder elkaar komen */
-        align-items: flex-start; /* Bovenaan uitlijnen */
-        padding: 20px; /* Ruimte tussen de kolommen */
-    
-    }
-    .article img {
-        width: 250px;
-    }
-    .col-2 {
-        width: 16.66%;
-    }
-
-    .col-9 {
-        width: 75%;
-    }
-}
-
 
 .links {
     background: #f4f4f4;
@@ -64,30 +54,50 @@ header h1 {
     padding: 20px;
 }
 
-
+/* Artikelen */
 .article {
     display: flex;
-    flex-direction: row; /* Zorgt ervoor dat de afbeelding rechts staat */
-    align-items: flex-start; /* Uitlijning bovenaan */
-    justify-content: space-between; /* Zorgt voor ruimte tussen tekst en afbeelding */
-    padding: 20px; 
-}
-
-.article img {
-    max-width: 100%;
-    height: auto;
+    flex-direction: row;  /* Tekst en afbeelding altijd naast elkaar */
+    align-items: center;
+    justify-content: space-between; 
     padding: 20px;
+    gap: 20px; /* Ruimte tussen tekst en afbeelding */
+    flex-wrap: nowrap; /* Voorkomt dat afbeelding onder de tekst komt */
 }
 
 .article-text {
-    flex: 1; /* Tekst neemt beschikbare ruimte in */
-    display: flex;
-    flex-direction: column; /* Zorgt ervoor dat h2 en p onder elkaar blijven */
+    flex: 1; /* Tekst neemt zoveel ruimte als mogelijk in */
+    text-align: left;
 }
 
-.article h2 {
-    width: 100%;
-    margin-bottom: 5px;
+.article img {
+    width: 150px; /* Beperkt de breedte van de afbeelding */
+    height: auto;
+    flex-shrink: 0; /* Zorgt ervoor dat de afbeelding niet verkleind wordt */
+    object-fit: contain;
+}
+
+/* Zorg dat col-9 en col-2 naast elkaar blijven op grotere schermen */
+@media only screen and (min-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: row; /* Naast elkaar zetten op breed scherm */
+        align-items: flex-start;
+    }
+
+    .col-2 {
+        width: 16.66%;
+        flex-shrink: 0;
+    }
+
+    .col-9 {
+        width: 75%;
+        flex-grow: 1; /* Laat het artikel de rest van de ruimte innemen */
+    }
+
+    .article img {
+        width: 250px; /* Op grotere schermen wordt de afbeelding iets groter */
+    }
 }
 
 footer {
@@ -99,7 +109,5 @@ footer {
 }
 
 main {
-
-  min-height: calc(100vh - 300px - 100px);
-  
-  }
+    min-height: calc(100vh - 300px - 100px);
+}
