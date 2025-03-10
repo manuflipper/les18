@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: url(afbeeldingen/pexels-mlkbnl-20434443crop3.jpg) center/cover no-repeat;
+    color: white;
+    text-align: left;
+    position: relative;
+    padding: 0;
+    height: 300px;
+}
+
+header h1 {
+    font-family: 'Young Serif', serif;
+    position: absolute;
+    bottom: 2px;
+    left: 20px;
+    margin: 0;
+    padding: 10px;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Op mobiel eerst onder elkaar */
+    padding: 20px;
+}
+
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: row; /* Naast elkaar op bredere schermen */
+        flex-wrap: nowrap; /* Voorkomt dat kolommen onder elkaar komen */
+        align-items: flex-start; /* Bovenaan uitlijnen */
+        padding: 20px; /* Ruimte tussen de kolommen */
+    
+    }
+    .article img {
+        width: 250px;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+}
+
+
+.links {
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+.rechts {
+    background: #ddd;
+    padding: 20px;
+}
+
+
+.article {
+    display: flex;
+    flex-direction: row; /* Zorgt ervoor dat de afbeelding rechts staat */
+    align-items: flex-start; /* Uitlijning bovenaan */
+    justify-content: space-between; /* Zorgt voor ruimte tussen tekst en afbeelding */
+    padding: 20px; 
+}
+
+.article img {
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.article-text {
+    flex: 1; /* Tekst neemt beschikbare ruimte in */
+    display: flex;
+    flex-direction: column; /* Zorgt ervoor dat h2 en p onder elkaar blijven */
+}
+
+.article h2 {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #395c54;
+    color: white;
+    height: 50px;
+}
+
+main {
+
+  min-height: calc(100vh - 300px - 100px);
+  
+  }
