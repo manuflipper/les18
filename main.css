@@ -1,46 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 
-* {
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html, body {
     width: 100%;
-    overflow-x: hidden;
-}
-
-body {
     font-family: Arial, sans-serif;
 }
 
 header {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background: url(afbeeldingen/pexels-mlkbnl-20434443crop3.jpg) center/cover no-repeat;
+    /*afbeelding in header en vult zonder vervorming*/
     color: white;
     text-align: left;
     position: relative;
+    /* Zorgt dat h1 onderaan header komt */
     height: 300px;
 }
 
 header h1 {
     font-family: 'Young Serif', serif;
-    position: absolute;
-    bottom: 2px;
-    left: 20px;
     margin: 0;
     padding: 10px;
+    position: absolute;
+    /*tekst onderaan header*/
+    bottom: 2px;
+    left: 20px;
     color: white;
 }
 
 .container {
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: column; /* Op mobiel onder elkaar */
+    flex-direction: column;
+    /*onder elkaar plaatsen ipv naast elkaar*/
+    width: 100%;
 }
 
-/* Kolommen */
 [class*="col-"] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     width: 100%;
 }
 
@@ -54,35 +60,48 @@ header h1 {
     padding: 20px;
 }
 
-/* Artikelen */
 .article {
-    display: flex;
-    flex-direction: row;  /* Tekst en afbeelding altijd naast elkaar */
-    align-items: center;
-    justify-content: space-between; 
+    margin: 0;
     padding: 20px;
-    gap: 20px; /* Ruimte tussen tekst en afbeelding */
-    flex-wrap: nowrap; /* Voorkomt dat afbeelding onder de tekst komt */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .article-text {
-    flex: 1; /* Tekst neemt zoveel ruimte als mogelijk in */
+    flex: 1;
+    /* Neemt alle ruimte in die over is in het artikel */
     text-align: left;
 }
 
 .article img {
-    width: 150px; /* Beperkt de breedte van de afbeelding */
+    width: 150px;
     height: auto;
-    flex-shrink: 0; /* Zorgt ervoor dat de afbeelding niet verkleind wordt */
     object-fit: contain;
+    /*schaling afbeelding gelijk houden*/
+    margin-left: 20px;
 }
 
-/* Zorg dat col-9 en col-2 naast elkaar blijven op grotere schermen */
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #395c54;
+    color: white;
+    height: 50px;
+    width: 100%;
+
+}
+
+main {
+    min-height: calc(100vh - 300px - 100px);
+
+}
+
+/* Mobile First hieronder desktop*/
 @media only screen and (min-width: 768px) {
     .container {
-        display: flex;
-        flex-direction: row; /* Naast elkaar zetten op breed scherm */
-        align-items: flex-start;
+        flex-direction: row;
     }
 
     .col-2 {
@@ -92,22 +111,10 @@ header h1 {
 
     .col-9 {
         width: 75%;
-        flex-grow: 1; /* Laat het artikel de rest van de ruimte innemen */
+        flex-grow: 1;
     }
 
     .article img {
-        width: 250px; /* Op grotere schermen wordt de afbeelding iets groter */
+        width: 250px;
     }
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #395c54;
-    color: white;
-    height: 50px;
-}
-
-main {
-    min-height: calc(100vh - 300px - 100px);
 }
